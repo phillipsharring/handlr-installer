@@ -1,0 +1,13 @@
+{
+  "name": "phillipsharring/handlr-installer",
+  "description": "App installer CLI for Handlr, a lightweight PHP middleware style framework.",
+  "bin": ["bin/handlr"],
+  "autoload": {
+    "psr-4": {
+      "HandlrInstaller\\": "src/"
+    }
+  },
+  "require": {
+    "symfony/console": "^6.0"
+  }
+}

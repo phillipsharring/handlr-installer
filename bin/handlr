@@ -1,9 +1,29 @@
 #!/usr/bin/env php
 <?php
 
-declare(strict_types=1);
+$autoloads = [
+    __DIR__ . '/../vendor/autoload.php',        // local dev (repo root/vendor)
+    __DIR__ . '/../../../autoload.php',         // installed as dependency (project/vendor)
+    __DIR__ . '/../../../../autoload.php',      // sometimes needed depending on nesting
+    getenv('COMPOSER_VENDOR_DIR') ? rtrim(getenv('COMPOSER_VENDOR_DIR'), '/').'/autoload.php' : null,
+];
 
-require __DIR__ . '/../vendor/autoload.php';
+foreach (array_filter($autoloads) as $file) {
+    if (file_exists($file)) {
+        require $file;
+
+        if ($file === __DIR__ . '/../vendor/autoload.php') {
+            define('HANDLR_INSTALLER_DEV', true);
+        }
+
+        break;
+    }
+}
+
+if (!class_exists(\Symfony\Component\Console\Application::class)) {
+    fwrite(STDERR, "Could not find Composer autoload. Make sure Composer’s global bin dir is on your PATH.\n");
+    exit(1);
+}
 
 use Symfony\Component\Console\Application;
 use HandlrInstaller\NewCommand;

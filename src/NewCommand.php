@@ -31,6 +31,11 @@ class NewCommand extends Command
             mkdir($path, 777, true);
         }
 
+        if ($this->existOnDebug()) {
+            $output->writeln("<comment>✔ Debug mode is on, skipping git clone</comment>");
+            return Command::SUCCESS;
+        }
+
         passthru("git clone https://github.com/phillipsharring/handlr-app \"$path\"");
 
         chdir($path);
@@ -38,5 +43,10 @@ class NewCommand extends Command
 
         $output->writeln("<info>✔ New Handlr app created in $path</info>");
         return Command::SUCCESS;
+    }
+
+    private function existOnDebug(): bool
+    {
+        return defined('HANDLR_INSTALLER_DEBUG');
     }
 }

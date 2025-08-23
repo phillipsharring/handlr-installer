@@ -1,7 +1,7 @@
 {
   "name": "phillipsharring/handlr-installer",
   "description": "App installer CLI for Handlr, a lightweight PHP middleware style framework.",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "type": "installer",
   "license": "MIT",
   "keywords": [

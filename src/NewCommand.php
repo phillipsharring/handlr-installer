@@ -31,11 +31,7 @@ class NewCommand extends Command
             mkdir($path, 777, true);
         }
 
-        return 1;
-
         passthru("git clone https://github.com/phillipsharring/handlr-app \"$path\"");
-
-        var_dump(is_dur($path));
 
         chdir($path);
         passthru("rm -rf .git && composer install");

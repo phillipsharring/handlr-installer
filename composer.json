@@ -1,16 +1,30 @@
 {
   "name": "phillipsharring/handlr-installer",
-  "license": "MIT",
-  "type": "installer",
-  "keywords": ["handlr", "installer", "cli"],
   "description": "App installer CLI for Handlr, a lightweight PHP middleware style framework.",
-  "bin": ["bin/handlr"],
+  "version": "0.1.0",
+  "type": "installer",
+  "license": "MIT",
+  "keywords": [
+    "handlr",
+    "installer",
+    "cli"
+  ],
+  "homepage": "https://github.com/phillipsharring/handlr",
+  "authors": [
+    {
+      "name": "Phillip Harrington",
+      "email": "phillip@phillipharrington.comngton.com"
+    }
+  ],
+  "bin": [
+    "bin/handlr"
+  ],
+  "require": {
+    "symfony/console": "7.3.*"
+  },
   "autoload": {
     "psr-4": {
       "HandlrInstaller\\": "src/"
     }
-  },
-  "require": {
-    "symfony/console": "7.3.*"
   }
 }

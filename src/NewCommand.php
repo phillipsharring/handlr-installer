@@ -11,7 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class NewCommand extends Command
 {
-    protected static $defaultName = 'new';
+    public function getName(): string{
+        return 'new';
+    }
 
     protected function configure(): void
     {
@@ -24,8 +26,17 @@ class NewCommand extends Command
     {
         $path = $input->getArgument('path');
 
+        if (!is_dir($path)) {
+            $output->writeln("<info>✔ Created App Directory in $path</info>");
+            mkdir($path, 777, true);
+        }
+
+        return 1;
+
         passthru("git clone https://github.com/phillipsharring/handlr-app \"$path\"");
-        mkdir($path, 777, true);
+
+        var_dump(is_dur($path));
+
         chdir($path);
         passthru("rm -rf .git && composer install");
 

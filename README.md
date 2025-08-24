@@ -7,6 +7,7 @@ Documentation forthcoming.
 ## Installation
 
 ```bash
-composer global require phillipsharring/handlr-installer
+# just using dev for now...
+composer global require phillipsharring/handlr-installer:dev-main --prefer-stable
 ```
 Make sure to place the composer's system-wide vendor bin directory in your PATH.

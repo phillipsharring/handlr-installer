@@ -36,10 +36,18 @@ class NewCommand extends Command
             return Command::SUCCESS;
         }
 
+        $output->writeln("<comment>✔ Cloning the Handlr App Skeleton project</comment>");
         passthru("git clone https://github.com/phillipsharring/handlr-app \"$path\"");
 
+        $output->writeln("<comment>✔ Changing directories to $path</comment>");
         chdir($path);
+
+        $output->writeln("<comment>✔ Removing VCS config</comment>");
+        $output->writeln("<comment>✔ Running Composer install</comment>");
         passthru("rm -rf .git && composer install");
+
+        $output->writeln("<comment>✔ Creating a fresh .env file.</comment>");
+        passthru("cp .env.example .env");
 
         $output->writeln("<info>✔ New Handlr app created in $path</info>");
         return Command::SUCCESS;

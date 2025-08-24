@@ -28,7 +28,7 @@ class NewCommand extends Command
 
         if (!is_dir($path)) {
             $output->writeln("<info>✔ Created App Directory in $path</info>");
-            mkdir($path, 777, true);
+            mkdir($path, 0777, true);
         }
 
         if ($this->existOnDebug()) {

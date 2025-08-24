@@ -37,7 +37,7 @@ class NewCommand extends Command
         }
 
         $output->writeln("<comment>✔ Cloning the Handlr App Skeleton project</comment>");
-        passthru("git clone https://github.com/phillipsharring/handlr-app \"$path\"");
+        passthru("git clone https://github.com/phillipsharring/handlr-app-skeleton \"$path\"");
 
         $output->writeln("<comment>✔ Changing directories to $path</comment>");
         chdir($path);
